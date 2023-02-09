@@ -1,5 +1,5 @@
 # lin-vm-deploy
-A program for deploying a Spring boot application using maven, docker and ngrok
+A program for deploying a Spring boot application using maven, docker and ngrok on a vm machine using SSH connect.
 
 For correct operation, you need: an installed iso image in a virtual machine with open access via SSH.
 
