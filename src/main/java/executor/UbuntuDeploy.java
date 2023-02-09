@@ -3,6 +3,9 @@ package executor;
 import model.DeployMachine;
 import model.DeployMachineImpl;
 import util.PropertyUtil;
+
+import java.util.logging.Logger;
+
 public class UbuntuDeploy implements OSDeploy{
     private final DeployMachine javaDeployMachine;
     private final String commandPath;
@@ -15,6 +18,8 @@ public class UbuntuDeploy implements OSDeploy{
     private final String dockerIntoPort;
     private final String dockerOutPort;
     private final String ngrokToken;
+
+    private final Logger logger = Logger.getLogger(UbuntuDeploy.class.getName());
 
     public UbuntuDeploy() {
         this.javaDeployMachine = new DeployMachineImpl();
@@ -62,7 +67,7 @@ public class UbuntuDeploy implements OSDeploy{
         javaDeployMachine.executeCommandAndPrint("M2_HOME='/opt/apache-maven-3.6.3'");
         javaDeployMachine.executeCommandAndPrint("PATH=\"$M2_HOME/bin:$PATH\"");
         javaDeployMachine.executeCommandAndPrint("export PATH");
-        System.out.println(javaDeployMachine.executeCommandAndReturn("mvn -version"));
+        logger.info("Result install maven:\n"+javaDeployMachine.executeCommandAndReturn("mvn -version"));
     }
 
     @Override
